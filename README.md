@@ -1,6 +1,6 @@
 # ft_printf
 
-- *%15s* : Le drapeau 15 spécifie une largeur minimale de champ de 15 caractères. Le texte "Hello" est aligné à droite, ce qui signifie qu'il y a des espaces à gauche pour atteindre la largeur minimale.
+*%15s* : Le drapeau 15 spécifie une largeur minimale de champ de 15 caractères. Le texte "Hello" est aligné à droite, ce qui signifie qu'il y a des espaces à gauche pour atteindre la largeur minimale.
 
     %-10d : Le drapeau - spécifie un alignement à gauche, et 10 spécifie une largeur minimale de champ de 10 caractères pour l'entier 42. L'entier est aligné à gauche, avec des espaces à droite.
 
