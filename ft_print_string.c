@@ -3,19 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_string.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vle-roux <vle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 20:51:49 by victor            #+#    #+#             */
-/*   Updated: 2023/11/05 01:05:41 by victor           ###   ########.fr       */
+/*   Updated: 2023/11/05 01:44:50 by vle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_print_string(char *str) {
-    if (!str)
-        str = "(null)";
-    while (*str) {
-        ft_putchar(*str++);
-    }
+void	ft_print_string(char *str)
+{
+	if (!str)
+		str = "(null)";
+	while (*str)
+	{
+		ft_putchar(*str++);
+	}
 }
