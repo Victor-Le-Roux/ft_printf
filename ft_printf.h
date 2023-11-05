@@ -6,7 +6,7 @@
 /*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 03:56:07 by vle-roux          #+#    #+#             */
-/*   Updated: 2023/11/05 12:52:47 by victor           ###   ########.fr       */
+/*   Updated: 2023/11/05 21:52:45 by victor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdarg.h>
 # include <stdio.h>
 
+
 int ft_print_char(char c);
 void ft_print_hex_lowercase(unsigned int number);
 void	ft_print_hex_uppercase(unsigned int number);
@@ -26,7 +27,6 @@ void	ft_print_pointer(void *ptr);
 void	ft_putchar(char c);
 void ft_print_string(char *str);
 void ft_putnbr_unsigned(unsigned int n);
-
 
 
 

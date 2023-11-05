@@ -6,11 +6,12 @@
 /*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 22:12:39 by victor            #+#    #+#             */
-/*   Updated: 2023/11/04 22:20:16 by victor           ###   ########.fr       */
+/*   Updated: 2023/11/05 21:50:08 by victor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
 
 void	ft_print_hex_uppercase(unsigned int number)
 {
