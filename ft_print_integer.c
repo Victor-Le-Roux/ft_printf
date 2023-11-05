@@ -3,14 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_integer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vle-roux <vle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 22:26:20 by victor            #+#    #+#             */
-/*   Updated: 2023/11/05 21:50:28 by victor           ###   ########.fr       */
+/*   Updated: 2023/11/05 23:01:30 by vle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "ft_printf.h"
 
 #include "ft_printf.h"
 

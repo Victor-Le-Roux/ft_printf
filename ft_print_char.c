@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vle-roux <vle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 20:09:21 by victor            #+#    #+#             */
-/*   Updated: 2023/11/05 21:54:26 by victor           ###   ########.fr       */
+/*   Updated: 2023/11/05 23:01:04 by vle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_print_char(char c) 
+int	ft_print_char(char c)
 {
-    ft_putchar(c);
-    return 0;
+	ft_putchar(c);
+	return (0);
 }
