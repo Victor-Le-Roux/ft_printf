@@ -6,7 +6,7 @@
 /*   By: vle-roux <vle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 03:03:20 by vle-roux          #+#    #+#             */
-/*   Updated: 2023/11/05 03:37:07 by vle-roux         ###   ########.fr       */
+/*   Updated: 2023/11/05 03:39:27 by vle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,6 @@ int	ft_printf(const char *format, ...)
 
 int	main(void)
 {
-	ft_printf("%287469234897c",);
+	ft_printf("%287469234897c");
 	return (0);
 }
