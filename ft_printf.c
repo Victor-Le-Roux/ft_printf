@@ -6,16 +6,14 @@
 /*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 03:03:20 by vle-roux          #+#    #+#             */
-/*   Updated: 2023/11/04 22:42:10 by victor           ###   ########.fr       */
+/*   Updated: 2023/11/05 01:02:13 by victor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-
-
 int main() {
-
-	ft_print_percent();
-	return 0;
+    unsigned int number = 1234567890;
+    ft_putnbr_unsigned(number);
+    return 0;
 }
