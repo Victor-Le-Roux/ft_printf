@@ -6,7 +6,7 @@
 /*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 03:03:20 by vle-roux          #+#    #+#             */
-/*   Updated: 2023/11/05 21:59:12 by victor           ###   ########.fr       */
+/*   Updated: 2023/11/05 22:00:53 by victor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,30 @@ int ft_printf(const char *format, ...) {
     return count;
 }
 
-int	main(void)
-{
-	ft_printf("%d test %d" ,1234,1234);
-	return (0);
+int main(void) {
+    // Test character printing
+    ft_printf("Character: %c\n", 'A');
+
+    // Test string printing
+    ft_printf("String: %s\n", "Hello, World!");
+
+    // Test pointer address printing
+    int x = 42;
+    ft_printf("Pointer: %p\n", (void *)&x);
+
+    // Test decimal/int printing
+    ft_printf("Decimal: %d\n", 12345);
+    ft_printf("Integer: %i\n", -12345);
+
+    // Test unsigned int printing
+    ft_printf("Unsigned: %u\n", 12345);
+
+    // Test hexadecimal printing (lowercase and uppercase)
+    ft_printf("Hex (lowercase): %x\n", 0xabcdef);
+    ft_printf("Hex (uppercase): %X\n", 0xabcdef);
+
+    // Test percent sign printing
+    ft_printf("Percent: %%\n");
+
+    return 0;
 }
