@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vle-roux <vle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 03:03:20 by vle-roux          #+#    #+#             */
-/*   Updated: 2023/11/05 03:39:27 by vle-roux         ###   ########.fr       */
+/*   Updated: 2023/11/05 13:00:32 by victor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,28 +34,41 @@ int	check_flags(char verif_flag)
 		return (9);
 	return (0);
 }
+void execute_print_function(int flag, va_list args) {
+    if (flag == 1)
+        ft_print_char(args);
+    else if (flag == 2)
+        ft_print_string(args);
+	else if (flag == 3)
+		ft_
 
-int	ft_printf(const char *format, ...)
-{
-	int		i;
-	char	test[2];
+}
+int ft_printf(const char *format, ...) {
+    va_list args;
+    int count = 0;
 
-	i = 0;
-	while (format[i])
-	{
-		if (format[i] == '%')
-		{
-			while (check_flags(format[++i]) == 0)
-			{
-				printf("test");
-			}
-			test[0] = format[i];
-			break ;
-		}
-		i++;
-	}
-	printf("%s",test);
-	return 0;
+    va_start(args, format);
+
+    while (*format) {
+        if (*format == '%') {
+            format++;
+            int flag = check_flags(*format);
+            if (flag != 0) {
+                execute_print_function(flag, args);
+            } else {
+                ft_putchar('%');
+                ft_putchar(*format);
+                count += 2;
+            }
+        } else {
+            ft_putchar(*format);
+            count++;
+        }
+        format++;
+    }
+
+    va_end(args);
+    return count;
 }
 
 int	main(void)

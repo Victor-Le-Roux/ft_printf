@@ -6,14 +6,15 @@
 /*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 20:09:21 by victor            #+#    #+#             */
-/*   Updated: 2023/11/04 20:11:45 by victor           ###   ########.fr       */
+/*   Updated: 2023/11/05 12:52:23 by victor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_char(char c)
+void ft_print_char(va_list args) 
 {
-	write(1, &c, 1);
-	return (1);
+    char c = (char)va_arg(args, int);
+    ft_putchar(c);
 }
+
