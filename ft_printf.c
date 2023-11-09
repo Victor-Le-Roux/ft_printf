@@ -3,14 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vle-roux <vle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 03:03:20 by vle-roux          #+#    #+#             */
-/*   Updated: 2023/11/05 23:32:49 by vle-roux         ###   ########.fr       */
+/*   Updated: 2023/11/09 01:16:22 by victor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "ft_printf.h"
 
 #include "ft_printf.h"
 
@@ -34,47 +32,16 @@ int	check_flags(char verif_flag)
 		return (6);
 	if (verif_flag == '%')
 		return (7);
-	return (NULL);
-}
-void execute_print_function(int flag, va_list args)
-{
-	static int	(*f[])(va_list) = {ft_print_char, ft_print_string,
-		ft_print_pointer, ft_print_integer, ft_putnbr_unsigned,
-		ft_print_hex_lowercase, ft_print_hex_uppercase, ft_print_percent};
-
-	f[flag](args);
+	return (-1);
 }
 
-int	ft_printf(const char *format, ...)
+int	execute_print_function(int flag, va_list args)
 {
-	va_list	args;
-	int		count;
-	int		flag;
+	static int	(*f[])(va_list) = {
+		ft_print_char, ft_print_string, ft_print_pointer, ft_print_integer,
+		ft_putnbr_unsigned, ft_print_hex_lowercase, ft_print_hex_uppercase,
+		ft_print_percent
+	};
 
-	count = 0;
-	va_start(args, format);
-
-	while (*format++)
-	{
-		if (*format == '%')
-		{
-			format++;
-			flag = check_flags(*format);
-			if (flag != 0)
-				execute_print_function(flag, args);
-			else
-			{
-				ft_putchar('%');
-				ft_putchar(*format);
-				count += 2;
-			}
-		}
-		else
-		{
-			ft_putchar(*format);
-			count++;
-		}
-	}
-	va_end(args);
-	return (count);
+	return (f[flag](args));
 }

@@ -6,7 +6,7 @@
 /*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 03:56:07 by vle-roux          #+#    #+#             */
-/*   Updated: 2023/11/05 21:52:45 by victor           ###   ########.fr       */
+/*   Updated: 2023/11/09 00:19:31 by victor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,14 @@
 # include <stdarg.h>
 # include <stdio.h>
 
-
-int ft_print_char(char c);
-void ft_print_hex_lowercase(unsigned int number);
-void	ft_print_hex_uppercase(unsigned int number);
-void	ft_print_integer(int n);
-void	ft_print_percent(void);
-void	ft_print_pointer(void *ptr);
-void	ft_putchar(char c);
-void ft_print_string(char *str);
-void ft_putnbr_unsigned(unsigned int n);
-
-
+int			ft_print_char(va_list args);
+int			ft_print_hex_lowercase(va_list args);
+int			ft_print_hex_uppercase(va_list args);
+int			ft_print_integer(va_list args);
+int			ft_print_percent(va_list args);
+int			ft_print_pointer(va_list args);
+void		ft_putchar(char c);
+int			ft_print_string(va_list args);
+int			ft_putnbr_unsigned(va_list args);
 
 #endif

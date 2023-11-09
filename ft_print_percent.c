@@ -3,16 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_percent.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vle-roux <vle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 22:38:21 by victor            #+#    #+#             */
-/*   Updated: 2023/11/05 01:42:43 by vle-roux         ###   ########.fr       */
+/*   Updated: 2023/11/08 23:50:47 by victor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_print_percent(void)
+int	ft_print_percent(va_list args)
 {
+	(void)args;
 	write(1, "%", 1);
+	return (1);
 }
+

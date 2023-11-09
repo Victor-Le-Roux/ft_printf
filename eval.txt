@@ -1,0 +1,390 @@
+Nom du fichier: ./ft_print_hex_lowercase.c
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+static int	print_hex_lowercase_recursive(unsigned int number)
+{
+	char	*hex_digits;
+	int		count;
+
+	count = 0;
+	hex_digits = "0123456789abcdef";
+	if (number >= 16)
+	{
+		count += print_hex_lowercase_recursive(number / 16);
+		count += print_hex_lowercase_recursive(number % 16);
+	}
+	else
+	{
+		write(1, &hex_digits[number], 1);
+		count = 1;
+	}
+	return (count);
+}
+
+int	ft_print_hex_lowercase(va_list args)
+{
+	unsigned int	number;
+	int				count;
+
+	count = 0;
+	number = va_arg(args, unsigned int);
+	count += print_hex_lowercase_recursive(number);
+	return (count);
+}
+
+
+
+
+
+Nom du fichier: ./ft_print_char.c
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+int	ft_print_char(va_list args)
+{
+	char	c ;
+
+	c = va_arg(args, int);
+	ft_putchar(c);
+	return (1);
+}
+
+
+Nom du fichier: ./ft_print_unsigned.c
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+static int	print_unsigned_recursive(unsigned int n)
+{
+	int	count;
+
+	count = 0;
+	if (n > 9)
+	{
+		count += print_unsigned_recursive(n / 10);
+		count += print_unsigned_recursive(n % 10);
+	}
+	else
+	{
+		ft_putchar_fd(n + '0', 1);
+		count = 1;
+	}
+	return (count);
+}
+
+int	ft_putnbr_unsigned(va_list args)
+{
+	unsigned int	n;
+	int				count;
+
+	n = va_arg(args, unsigned int);
+	count = 0;
+	count += print_unsigned_recursive(n);
+	return (count);
+}
+
+
+Nom du fichier: ./ft_print_pointer.c
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+static void	ft_putchar_fds(char c, int fd)
+{
+	write(fd, &c, 1);
+}
+
+static int	ft_putstr_fds(char *s, int fd)
+{
+	int	count;
+
+	count = 0;
+	while (*s)
+	{
+		ft_putchar_fds(*s++, fd);
+		count++;
+	}
+	return (count);
+}
+
+static int	ft_puthex_ptr_recursive(unsigned long ptr)
+{
+	char	*hex_digits;
+	int		count;
+
+	hex_digits = "0123456789abcdef";
+	count = 0;
+	if (ptr >= 16)
+	{
+		count += ft_puthex_ptr_recursive(ptr / 16);
+		count += ft_puthex_ptr_recursive(ptr % 16);
+	}
+	else
+	{
+		ft_putchar_fds(hex_digits[ptr], 1);
+		count = 1;
+	}
+	return (count);
+}
+
+int	ft_print_pointer(va_list args)
+{
+	void	*ptr;
+	int		count;
+
+	ptr = va_arg(args, void *);
+	count = ft_putstr_fds("0x", 1);
+	count += ft_puthex_ptr_recursive((unsigned long)ptr);
+	return (count);
+}
+
+
+
+Nom du fichier: ./ft_printf.h
+/* ************************************************************************** */
+
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+
+# include "libft/libft.h"
+# include <stdarg.h>
+# include <stdio.h>
+
+int			ft_print_char(va_list args);
+int			ft_print_hex_lowercase(va_list args);
+int			ft_print_hex_uppercase(va_list args);
+int			ft_print_integer(va_list args);
+int			ft_print_percent(va_list args);
+int			ft_print_pointer(va_list args);
+void		ft_putchar(char c);
+int			ft_print_string(va_list args);
+int			ft_putnbr_unsigned(va_list args);
+
+#endif
+
+Nom du fichier: ./ft_print_string.c
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+int	ft_print_string(va_list args)
+{
+	char	*str;
+	int		count;
+
+	str = va_arg(args, char *);
+	count = 0;
+	if (!str)
+		str = "(null)";
+	while (*str)
+	{
+		ft_putchar(*str++);
+		count++;
+	}
+	return (count);
+}
+
+
+Nom du fichier: ./ft_print_hex_uppercase.c
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+static int	print_hex_uppercase_recursive(unsigned int number)
+{
+	char	*hex_digits;
+	int		count;
+
+	count = 0;
+	hex_digits = "0123456789ABCDEF";
+	if (number >= 16)
+	{
+		count += print_hex_uppercase_recursive(number / 16);
+		count += print_hex_uppercase_recursive(number % 16);
+	}
+	else
+	{
+		write(1, &hex_digits[number], 1);
+		count = 1;
+	}
+	return (count);
+}
+
+int	ft_print_hex_uppercase(va_list args)
+{
+	unsigned int	number;
+	int				count;
+
+	count = 0;
+	number = va_arg(args, unsigned int);
+	count += print_hex_uppercase_recursive(number);
+	return (count);
+}
+
+
+Nom du fichier: ./ft_print_integer.c
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+static int	print_integer_recursive(int n)
+{
+	int	count;
+
+	count = 0;
+	if (n == -2147483648)
+	{
+		write(1, "-2147483648", 11);
+		return (11);
+	}
+	if (n < 0)
+	{
+		ft_putchar('-');
+		count++;
+		n = -n;
+	}
+	if (n > 9)
+	{
+		count += print_integer_recursive(n / 10);
+		count += print_integer_recursive(n % 10);
+	}
+	else
+	{
+		ft_putchar(n + '0');
+		count++;
+	}
+	return (count);
+}
+
+int	ft_print_integer(va_list args)
+{
+	int	n;
+	int	count;
+
+	count = 0;
+	n = va_arg(args, int);
+	count += print_integer_recursive(n);
+	return (count);
+}
+
+
+
+
+Nom du fichier: ./ft_printf.c
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+#include "ft_printf.h"
+
+int	check_flags(char verif_flag)
+{
+	if (verif_flag == 'c')
+		return (0);
+	if (verif_flag == 's')
+		return (1);
+	if (verif_flag == 'p')
+		return (2);
+	if (verif_flag == 'd')
+		return (3);
+	if (verif_flag == 'i')
+		return (3);
+	if (verif_flag == 'u')
+		return (4);
+	if (verif_flag == 'x')
+		return (5);
+	if (verif_flag == 'X')
+		return (6);
+	if (verif_flag == '%')
+		return (7);
+	return (-1);
+}
+
+int	execute_print_function(int flag, va_list args)
+{
+	static int	(*f[])(va_list) = {
+		ft_print_char, ft_print_string, ft_print_pointer, ft_print_integer,
+		ft_putnbr_unsigned, ft_print_hex_lowercase, ft_print_hex_uppercase,
+		ft_print_percent
+	};
+
+	return (f[flag](args));
+}
+
+int	print_literal_percent(const char **format)
+{
+	ft_putchar('%');
+	ft_putchar(**format);
+	return (2);
+}
+
+int	handle_format(const char **format, va_list args)
+{
+	int	count;
+	int	flag;
+
+	count = 0;
+	(*format)++;
+	flag = check_flags(**format);
+	if (flag != 0)
+	{
+		count += execute_print_function(flag, args);
+	}
+	else
+	{
+		count += print_literal_percent(format);
+	}
+
+	return (count);
+}
+
+
+int	ft_printf(const char *format, ...)
+{
+	va_list	args;
+	int		count;
+
+	count = 0;
+
+	va_start(args, format);
+	while (*format)
+	{
+		if (*format == '%')
+		{
+			count += handle_format(&format, args);
+		}
+		else
+		{
+			ft_putchar(*format);
+			count++;
+		}
+		format++;
+	}
+	va_end(args);
+	return (count);
+}
+
+
+Nom du fichier: ./ft_print_percent.c
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+
+int	ft_print_percent(va_list args)
+{
+	(void)args;
+	write(1, "%", 1);
+	return (1);
+}
+
+
+

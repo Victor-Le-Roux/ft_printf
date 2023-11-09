@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_integer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vle-roux <vle-roux@student.42.fr>          +#+  +:+       +#+        */
+/*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 22:26:20 by victor            #+#    #+#             */
-/*   Updated: 2023/11/05 23:01:30 by vle-roux         ###   ########.fr       */
+/*   Updated: 2023/11/09 00:14:36 by victor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,44 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void	ft_print_integer(int n)
+static int	print_integer_recursive(int n)
 {
+	int	count;
+
+	count = 0;
 	if (n == -2147483648)
 	{
 		write(1, "-2147483648", 11);
-		return ;
+		return (11);
 	}
 	if (n < 0)
 	{
 		ft_putchar('-');
+		count++;
 		n = -n;
 	}
 	if (n > 9)
 	{
-		ft_print_integer(n / 10);
-		ft_print_integer(n % 10);
+		count += print_integer_recursive(n / 10);
+		count += print_integer_recursive(n % 10);
 	}
 	else
 	{
 		ft_putchar(n + '0');
+		count++;
 	}
+	return (count);
 }
+
+int	ft_print_integer(va_list args)
+{
+	int	n;
+	int	count;
+
+	count = 0;
+	n = va_arg(args, int);
+	count += print_integer_recursive(n);
+	return (count);
+}
+
+
