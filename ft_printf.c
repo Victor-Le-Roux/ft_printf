@@ -5,43 +5,59 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 03:03:20 by vle-roux          #+#    #+#             */
-/*   Updated: 2023/11/09 01:16:22 by victor           ###   ########.fr       */
+/*   Created: 2023/11/13 23:40:40 by victor            #+#    #+#             */
+/*   Updated: 2023/11/13 23:40:44 by victor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "includes/ft_printf.h"
 
-int	check_flags(char verif_flag)
+static int	exec_conversion(char spec_ltr, va_list args)
 {
-	if (verif_flag == 'c')
-		return (0);
-	if (verif_flag == 's')
+	if (spec_ltr == '%')
+		return (write(1, "%", 1));
+	else if (spec_ltr == 'c')
+	{
+		ft_putchar_fd(va_arg(args, int), 1);
 		return (1);
-	if (verif_flag == 'p')
-		return (2);
-	if (verif_flag == 'd')
-		return (3);
-	if (verif_flag == 'i')
-		return (3);
-	if (verif_flag == 'u')
-		return (4);
-	if (verif_flag == 'x')
-		return (5);
-	if (verif_flag == 'X')
-		return (6);
-	if (verif_flag == '%')
-		return (7);
-	return (-1);
+	}
+	else if (spec_ltr == 's')
+		return (prt_str(va_arg(args, char *)));
+	else if (spec_ltr == 'p')
+		return (prt_ptr(va_arg(args, void *)));
+	else if (spec_ltr == 'd' || spec_ltr == 'i')
+		return (prt_int(va_arg(args, int)));
+	else if (spec_ltr == 'u')
+		return (prt_unsigned(va_arg(args, unsigned int)));
+	else if (spec_ltr == 'x')
+		return (prt_hexa(va_arg(args, ssize_t), false));
+	else if (spec_ltr == 'X')
+		return (prt_hexa(va_arg(args, ssize_t), true));
+	return (0);
 }
 
-int	execute_print_function(int flag, va_list args)
+int	ft_printf(const char *__format, ...)
 {
-	static int	(*f[])(va_list) = {
-		ft_print_char, ft_print_string, ft_print_pointer, ft_print_integer,
-		ft_putnbr_unsigned, ft_print_hex_lowercase, ft_print_hex_uppercase,
-		ft_print_percent
-	};
+	int		i;
+	int		len;
+	va_list	args;
 
-	return (f[flag](args));
+	if (!__format)
+		return (0);
+	i = 0;
+	len = 0;
+	va_start(args, __format);
+	while (__format[i])
+	{
+		if (__format[i] == '%')
+		{
+			i++;
+			len += exec_conversion(__format[i], args);
+		}
+		else
+			len += write(1, &__format[i], 1);
+		i++;
+	}
+	va_end(args);
+	return (len);
 }

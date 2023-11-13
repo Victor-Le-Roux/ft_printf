@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   prt_str.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 20:09:21 by victor            #+#    #+#             */
-/*   Updated: 2023/11/08 23:39:25 by victor           ###   ########.fr       */
+/*   Created: 2023/11/13 23:41:15 by victor            #+#    #+#             */
+/*   Updated: 2023/11/13 23:42:21 by victor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_char(va_list args)
+int	prt_str(char const *str)
 {
-	char	c ;
-
-	c = va_arg(args, int);
-	ft_putchar(c);
-	return (1);
+	if (str == NULL)
+		return (write(1, "(null)", 6));
+	else
+		return (write(1, str, ft_strlen(str)));
 }
