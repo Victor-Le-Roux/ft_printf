@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prt_ptr.c                                          :+:      :+:    :+:   */
+/*   ft_print_pointer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vle-roux <vle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 23:42:26 by victor            #+#    #+#             */
-/*   Updated: 2023/11/13 23:44:27 by victor           ###   ########.fr       */
+/*   Created: 2023/11/24 18:31:38 by vle-roux          #+#    #+#             */
+/*   Updated: 2023/11/24 18:31:40 by vle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	put_ptr(unsigned long long addr)
 	write(STDOUT_FILENO, &digits[addr % 16], 1);
 }
 
-int	prt_ptr(void *addr)
+int	ft_print_pointer(void *addr)
 {
 	if (addr == NULL)
 		return (write(STDOUT_FILENO, "(nil)", 5));

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vle-roux <vle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 23:40:40 by victor            #+#    #+#             */
-/*   Updated: 2023/11/13 23:40:44 by victor           ###   ########.fr       */
+/*   Updated: 2023/11/24 18:31:00 by vle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,17 @@ static int	exec_conversion(char spec_ltr, va_list args)
 		return (1);
 	}
 	else if (spec_ltr == 's')
-		return (prt_str(va_arg(args, char *)));
+		return (ft_print_string(va_arg(args, char *)));
 	else if (spec_ltr == 'p')
-		return (prt_ptr(va_arg(args, void *)));
+		return (ft_print_pointer(va_arg(args, void *)));
 	else if (spec_ltr == 'd' || spec_ltr == 'i')
-		return (prt_int(va_arg(args, int)));
+		return (ft_print_int(va_arg(args, int)));
 	else if (spec_ltr == 'u')
-		return (prt_unsigned(va_arg(args, unsigned int)));
+		return (ft_print_unsigned(va_arg(args, unsigned int)));
 	else if (spec_ltr == 'x')
-		return (prt_hexa(va_arg(args, ssize_t), false));
+		return (ft_print_hexa(va_arg(args, ssize_t), false));
 	else if (spec_ltr == 'X')
-		return (prt_hexa(va_arg(args, ssize_t), true));
+		return (ft_print_hexa(va_arg(args, ssize_t), true));
 	return (0);
 }
 

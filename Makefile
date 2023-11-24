@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: victor <victor@student.42.fr>              +#+  +:+       +#+         #
+#    By: vle-roux <vle-roux@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/13 23:43:05 by victor            #+#    #+#              #
-#    Updated: 2023/11/13 23:43:08 by victor           ###   ########.fr        #
+#    Created: 2023/11/24 18:24:15 by vle-roux          #+#    #+#              #
+#    Updated: 2023/11/24 18:31:00 by vle-roux         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CFLAGS = -Wall -Wextra -Werror -I./includes/
 RM = rm -rf
 NAME = libftprintf.a
 
-SRCS = ft_printf.c srcs/prt_hexa.c srcs/prt_int.c srcs/prt_ptr.c srcs/prt_str.c srcs/prt_unsigned.c
+SRCS = ft_printf.c srcs/ft_print_hexa.c srcs/ft_print_int.c srcs/ft_print_pointer.c srcs/ft_print_string.c srcs/ft_print_unsigned.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

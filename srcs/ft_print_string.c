@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prt_str.c                                          :+:      :+:    :+:   */
+/*   ft_print_string.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vle-roux <vle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 23:41:15 by victor            #+#    #+#             */
-/*   Updated: 2023/11/13 23:42:21 by victor           ###   ########.fr       */
+/*   Created: 2023/11/24 18:31:24 by vle-roux          #+#    #+#             */
+/*   Updated: 2023/11/24 18:31:27 by vle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	prt_str(char const *str)
+int	ft_print_string(char const *str)
 {
 	if (str == NULL)
 		return (write(1, "(null)", 6));

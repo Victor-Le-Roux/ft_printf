@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vle-roux <vle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 23:42:57 by victor            #+#    #+#             */
-/*   Updated: 2023/11/13 23:42:59 by victor           ###   ########.fr       */
+/*   Updated: 2023/11/24 18:31:00 by vle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 # include <stdbool.h>
 
 int		ft_printf(const char *__format, ...);
-int		prt_str(char const *str);
-int		prt_ptr(void *ptr_addr);
-int		prt_int(int n);
-int		prt_unsigned(unsigned int nbr);
-int		prt_hexa(unsigned int nbr, bool upper_case);
+int		ft_print_string(char const *str);
+int		ft_print_pointer(void *ptr_addr);
+int		ft_print_int(int n);
+int		ft_print_unsigned(unsigned int nbr);
+int		ft_print_hexa(unsigned int nbr, bool upper_case);
 
 #endif

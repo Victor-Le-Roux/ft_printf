@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   prt_hexa.c                                         :+:      :+:    :+:   */
+/*   ft_print_hexa.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: victor <victor@student.42.fr>              +#+  +:+       +#+        */
+/*   By: vle-roux <vle-roux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 23:42:48 by victor            #+#    #+#             */
-/*   Updated: 2023/11/13 23:42:52 by victor           ###   ########.fr       */
+/*   Created: 2023/11/24 18:19:37 by vle-roux          #+#    #+#             */
+/*   Updated: 2023/11/24 18:19:42 by vle-roux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	put_hexa(unsigned int nbr, bool upper_case)
 		write(STDOUT_FILENO, &lower_digits[nbr % 16], 1);
 }
 
-int	prt_hexa(unsigned int nbr, bool upper_case)
+int	ft_print_hexa(unsigned int nbr, bool upper_case)
 {
 	put_hexa(nbr, upper_case);
 	return (h_digits(nbr));
